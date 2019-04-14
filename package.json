@@ -3,6 +3,6 @@
     "displayName": "RLB Runtime Base",
     "version": "1.0.0",
     "unity": "2018.1",
-    "description": "Ambient Occlusion for Lightweight Render Pipeline",
+    "description": "",
     "dependencies": { }
 }
