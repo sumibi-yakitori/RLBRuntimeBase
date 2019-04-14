@@ -16,11 +16,11 @@ namespace RetroLevel {
 		// protected void OnEnable() => this.Generate();
 		// protected void OnDisable() => this.Clear();
 
-		private void Clear() =>
-      this.transform
-        .Cast<Transform>()
-        .ToArray()
-        .ForEach(child => Object.DestroyImmediate(child.gameObject));
+		private void Clear() {
+			foreach (var child in this.transform.Cast<Transform>().ToArray()) {
+        Object.DestroyImmediate(child.gameObject);
+			}
+		}
 
 		private void Generate() {
 			if (this.prefab == null) { return; }
@@ -33,16 +33,14 @@ namespace RetroLevel {
 				this.Clear();
 
 				var pos = Vector3.zero;
-				Enumerable
-					.Range(0, (int)this.amount)
-					.ForEach(__ => {
-             var go = Object.Instantiate(this.prefab, this.transform, false);
-             var size = boxCollider.size * 0.5f;
-             pos.x = Random.Range(-size.x, size.x);
-             pos.y = Random.Range(-size.y, size.y);
-             pos.z = Random.Range(-size.z, size.z);
-             go.transform.localPosition = pos;
-					});
+				foreach (var __ in Enumerable.Range(0, (int)this.amount)) {
+           var go = Object.Instantiate(this.prefab, this.transform, false);
+           var size = boxCollider.size * 0.5f;
+           pos.x = Random.Range(-size.x, size.x);
+           pos.y = Random.Range(-size.y, size.y);
+           pos.z = Random.Range(-size.z, size.z);
+           go.transform.localPosition = pos;
+				}
       });
 		}
 	}
