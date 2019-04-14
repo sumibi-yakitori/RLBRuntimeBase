@@ -1,5 +1,5 @@
 {
-    "name": "RLBRuntimeBase",
+    "name": "RLB.Runtime.Base",
     "references": [
         "UniRx"
     ],
