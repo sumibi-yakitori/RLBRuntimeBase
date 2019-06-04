@@ -1,6 +1,7 @@
 using System.Linq;
 using UniRx;
 using UnityEngine;
+using SY.Utils;
 
 namespace RetroLevel {
   [ExecuteInEditMode, SelectionBase, DisallowMultipleComponent, RequireComponent(typeof(BoxCollider))]
@@ -17,7 +18,7 @@ namespace RetroLevel {
     // protected void OnDisable() => this.Clear();
 
     private void Clear() {
-      foreach (var child in this.transform.Cast<Transform>().ToArray()) {
+      foreach (var child in this.transform.GetChildren().ToArray()) {
         Object.DestroyImmediate(child.gameObject);
       }
     }

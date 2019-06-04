@@ -1,7 +1,8 @@
 {
     "name": "RLB.Runtime.Base",
     "references": [
-        "UniRx"
+        "UniRx",
+        "SY.Utils"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
