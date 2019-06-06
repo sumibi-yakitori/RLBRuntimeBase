@@ -18,7 +18,7 @@ namespace RetroLevel {
     // protected void OnDisable() => this.Clear();
 
     private void Clear() {
-      foreach (var child in this.transform.GetChildren().ToArray()) {
+      foreach (var child in this.transform.GetChildrenIncludeInactive().ToArray()) {
         Object.DestroyImmediate(child.gameObject);
       }
     }
