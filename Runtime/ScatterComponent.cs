@@ -3,7 +3,7 @@ using UniRx;
 using UnityEngine;
 using SY.Utils;
 
-namespace RetroLevel {
+namespace RLB {
   [ExecuteInEditMode, SelectionBase, DisallowMultipleComponent, RequireComponent(typeof(BoxCollider))]
   public class ScatterComponent : MonoBehaviour {
     ////// Near-Constructors //////
