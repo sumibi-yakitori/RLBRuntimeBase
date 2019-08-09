@@ -2,6 +2,7 @@ using System.Linq;
 using UniRx;
 using UnityEngine;
 using SY.Utils;
+using UnityEngine.Serialization;
 
 namespace RLB {
   [
@@ -13,7 +14,9 @@ namespace RLB {
     ////// Near-Constructors //////
 
     ////// Props //////
-    [SerializeField] private GameObject prefab = null;
+    [FormerlySerializedAs("prefab"), SerializeField]
+    private GameObject original = null;
+    
     [SerializeField] private uint amount = 10;
     [SerializeField] private Vector3 size = Vector3.one;
 
@@ -29,18 +32,18 @@ namespace RLB {
     }
 
     private void Generate() {
-      if (this.prefab == null) { return; }
+      if (this.original == null) { return; }
 
-      this.gameObject.name = "Scatter: [" + this.prefab.name + "]";
-      var boxCollider = this.GetComponent<BoxCollider>();
-      boxCollider.enabled = false;
+      this.gameObject.name = "Scatter: [" + this.original.name + "]";
+      // var boxCollider = this.GetComponent<BoxCollider>();
+      // boxCollider.enabled = false;
 
       Observable.NextFrame().Subscribe(_ => {
         this.Clear();
 
         var pos = Vector3.zero;
-        foreach (var __ in Enumerable.Range(0, (int) this.amount)) {
-          var go = Object.Instantiate(this.prefab, this.transform, false);
+        foreach (var __ in Enumerable.Range(0, (int)this.amount)) {
+          var go = Object.Instantiate(this.original, this.transform, false);
           var halfSize = this.size * 0.5f;
           pos.x = Random.Range(-halfSize.x, halfSize.x);
           pos.y = Random.Range(-halfSize.y, halfSize.y);
