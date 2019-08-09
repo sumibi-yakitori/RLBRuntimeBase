@@ -4,7 +4,12 @@ using UnityEngine;
 using SY.Utils;
 
 namespace RLB {
-  [ExecuteInEditMode, SelectionBase, DisallowMultipleComponent, RequireComponent(typeof(BoxCollider))]
+  [
+    DisallowMultipleComponent
+    , ExecuteInEditMode
+    , SelectionBase
+    , RequireComponent(typeof(BoxCollider))
+  ]
   public class ScatterComponent : MonoBehaviour {
     ////// Near-Constructors //////
 
