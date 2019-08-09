@@ -27,7 +27,7 @@ namespace RLB {
 
     private void Clear() {
       foreach (var child in this.transform.GetChildrenIncludeInactive().ToArray()) {
-        Object.DestroyImmediate(child.gameObject);
+        child.gameObject.SmartDestroy();
       }
     }
 
@@ -35,9 +35,6 @@ namespace RLB {
       if (this.original == null) { return; }
 
       this.gameObject.name = "Scatter: [" + this.original.name + "]";
-      // var boxCollider = this.GetComponent<BoxCollider>();
-      // boxCollider.enabled = false;
-
       Observable.NextFrame().Subscribe(_ => {
         this.Clear();
 
